@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+    <script>
+      AFRAME.registerComponent('cursor-listener',{
+                           init: function(){
+                                 var newcolor="green";
+          
+                                this.el.addEventListener("mouseenter", function(e){
+                                   console.log("mouseenter"); 
+                                   this.setAttribute('material','color',newcolor);
+                                                 });
+          
+                                 this.el.addEventListener("mouseleave", function(e){
+                                   console.log("mouseleave"); 
+                                   this.setAttribute('material','color',"red");
+                                                 });
+                         }
+       });
+      </script>
+    
+  </head>
+    <body>
+     
+      <a-scene inspector = "url: http://aframe.io/releases/0.3.0/aframe-inspector.min.js">
+      
+    <a-box cursor-listener color="red" scale="0.2 0.2 0.2" position="0 0 -2"></a-box>
+    <a-box cursor-listener color="red" scale="0.5 0.5 0.5" position="5 0 -2"></a-box>
+    <a-box cursor-listener color="red" scale="0.7 0.7 0.7" position="-5 0 -2"></a-box>
+      
+      <a-entity camera look-controls>
+          <a-entity cursor="fuse:true; fuseTimeout:2000"
+                    position="0 0 -1"
+                    geometry="primitive:ring; radiusInner:0.03; radiusOuter:.04"
+                    
+          ></a-entity>
+      </a-entity>
+        
+       </a-scene>
+    </body>
+</html>
